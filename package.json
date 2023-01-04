@@ -1,0 +1,27 @@
+{
+  "name": "js-data-structures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">= 8"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules 'node_modules/.bin/jest'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrezipf94/js-data-structures.git"
+  },
+  "author": "Andre Luis Zipf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrezipf94/js-data-structures/issues"
+  },
+  "homepage": "https://github.com/andrezipf94/js-data-structures#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
