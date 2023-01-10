@@ -21,13 +21,26 @@ export default class SinglyLinkedList {
 
     pop()
     {
-        let current = this.head;
-        let newTail = null;
-        while (current) {
-            newTail = current;
-            current = newTail.next;
+        if (this.isEmpty()) {
+            return null;
         }
-        newTail.next = null;
+
+        if (this.length === 1) {
+            let head = this.head;
+            this.head = null;
+            this.tail = null;
+            this.length--;
+            return head;
+        }
+
+        let previous = this.head;
+        let current = previous.next;
+        while(current.next) {
+            previous = current;
+            current = current.next;
+        }
+        previous.next = null;
+        this.tail = previous;
         this.length--;
         return current;
     }
@@ -38,6 +51,9 @@ export default class SinglyLinkedList {
         this.head = currentHead.next;
         currentHead.next = null;
         this.length--;
+        if (this.isEmpty()) {
+            this.tail = null;
+        }
         return currentHead;
         
     }
@@ -48,6 +64,9 @@ export default class SinglyLinkedList {
         newHead.next = this.head;
         this.head = newHead;
         this.length++;
+        if (this.tail === null) {
+            this.tail = newHead;
+        }
         return this.head;
     }
 
@@ -90,6 +109,7 @@ export default class SinglyLinkedList {
 
         if (index === 0) {
             this.unshift(value);
+            return true;
         }
 
         if (index === this.length) {
@@ -104,7 +124,7 @@ export default class SinglyLinkedList {
             precedentNode = subsequentNode;
             subsequentNode = precedentNode.next;
         }
-        this.precedentNode.next = newNode;
+        precedentNode.next = newNode;
         newNode.next = subsequentNode;
 
         return true;
@@ -138,6 +158,10 @@ export default class SinglyLinkedList {
 
     reverse()
     {
+        if (this.length === 1) {
+            return;
+        }
+        
         let currentNode = this.head;
         this.head = this.tail;
         this.tail = currentNode;
